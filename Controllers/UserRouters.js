@@ -33,7 +33,7 @@ router.put("/:id", async (request, response) => {
             mail,
             number,
             password
-        }, { new: true }); // El flag {new: true} asegura que el documento actualizado se retorne
+        }, { new: true });
 
         if (!updatedUser) {
             return response.status(404).send({ message: "User not found." });

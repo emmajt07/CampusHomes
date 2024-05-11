@@ -24,7 +24,7 @@ router.post("/", async (request, response) => {
 
 router.put("/:id", async (request, response) => {
     const { id } = request.params;
-    const { address, typeFood, rating, service, password } = request.body; // Asumiendo que estos son los campos que quieres actualizar
+    const { address, typeFood, rating, service, password } = request.body;
 
     try {
         const updatedRestaurant = await RestaurantModel.findByIdAndUpdate(id, {
@@ -33,7 +33,7 @@ router.put("/:id", async (request, response) => {
             rating,
             service,
             password
-        }, { new: true }); // El flag {new: true} es opcional y sirve para retornar el documento actualizado
+        }, { new: true });
 
         if (!updatedRestaurant) {
             return response.status(404).send({ message: "Restaurant not found." });
