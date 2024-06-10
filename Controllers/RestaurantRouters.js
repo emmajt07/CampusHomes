@@ -2,7 +2,12 @@ import express from "express";
 import RestaurantModel from "../DAOS/RestaurantSchema.js";
 const router = express.Router();
 
-router.get("/", async (request, response) => {
+
+router.get('/restaurante', (req, res) => {
+    res.render('restaurant')
+})
+
+router.get("/restaurante", async (request, response) => {
     try {
         const restaurants = await RestaurantModel.find({});
         response.send(restaurants);
@@ -11,7 +16,7 @@ router.get("/", async (request, response) => {
     }
 });
 
-router.post("/", async (request, response) => {
+router.post("/restaurante", async (request, response) => {
     const restaurant = new RestaurantModel(request.body);
 
     try {
@@ -22,7 +27,7 @@ router.post("/", async (request, response) => {
     }
 });
 
-router.put("/:id", async (request, response) => {
+router.put("/restaurante/:id", async (request, response) => {
     const { id } = request.params;
     const { address, typeFood, rating, service, password } = request.body;
 
@@ -45,7 +50,7 @@ router.put("/:id", async (request, response) => {
     }
 });
 
-router.delete("/:id", async (request, response) => {
+router.delete("/restaurante/:id", async (request, response) => {
     const { id } = request.params;
 
     try {
@@ -62,7 +67,7 @@ router.delete("/:id", async (request, response) => {
 });
 
 
-router.get("/:id", async (request, response) => {
+router.get("/restaurante/:id", async (request, response) => {
     try {
         const restaurant = await RestaurantModel.findOne({ _id: request.params.id });
         response.send(restaurant);
