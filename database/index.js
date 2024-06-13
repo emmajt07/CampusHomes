@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 
 //configure Handlabers
 app.engine('handlebars', engine ({
-    defaultLayout: 'index',
+    defaultLayout: 'main',
 }));
 app.set('view engine', 'handlebars');
 
