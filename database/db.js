@@ -4,7 +4,7 @@ export default class DB {
 
     static async connectDB(DB_URI) {
         try {
-            mongoose.connect(DB_URI);
+            await mongoose.connect(DB_URI);
         } catch (err) {
             console.error(err.message);
             process.exit(1);

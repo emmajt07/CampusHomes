@@ -3,9 +3,6 @@ import RestaurantModel from "../DAOS/RestaurantSchema.js";
 const router = express.Router();
 
 
-router.get('/restaurante', (req, res) => {
-    res.render('restaurant')
-})
 
 router.get("/restaurante", async (request, response) => {
     try {
