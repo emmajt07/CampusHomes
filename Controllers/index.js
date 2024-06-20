@@ -7,9 +7,6 @@ import DB from "../database/db.js";
 import UserRouter from "./UserRouters.js";
 import RestaurantRouter from "./RestaurantRouters.js";
 import LoginUserRouter from "./LoginUsersRouters.js";
-import session from "express-session";
-import passport, { Passport } from "passport";
-import passport from "passport-local-mongoose";
 
 
 
@@ -38,25 +35,6 @@ app.use("/api/restaurants", RestaurantRouter);
 app.use("api/loginusers", LoginUserRouter);
 
 DB.connectDB(process.env.DB_URI);
-
-
-app.use(express.static("public"));
-app.use(session({ 
-  secret : "Esta vida me encanta me gusta, pero no me asusta...", 
-  resave : false, 
-  saveUninitialized : false
-}));
-
-app.use(passport.initialize()); 
-  
-// Starting the session 
-app.use(passport.session()); 
- 
-passport.use(UserSchema.createStrategy()); 
-  
-// Serializing and deserializing 
-passport.serializeUser(UserSchema.serializeUser()); 
-passport.deserializeUser(UserSchema.deserializeUser()); 
 
 
 

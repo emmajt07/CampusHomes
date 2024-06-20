@@ -1,6 +1,5 @@
 import express from "express";
 import UserModel from "../DAOS/UserSchema.js";
-import passport from "passport";
 const router = express.Router();
 
 
@@ -14,12 +13,15 @@ router.get("/", async (request, response) => {
 });
 
 
-router.post("/", passport.authenticate('local', { 
-    successMessage: "Login Successful",
-    failureMessage: "Invalid username or password"
-}), (req, res) => {
-    res.send("Login Successful");
+router.get("/:id", async (request, response) => {
+    try {
+        const user = await UserModel.findOne({ _id: request.params.id });
+        response.send(user);
+    } catch (error) {
+        response.status(500).send({ error });
+    }
 });
+
 
 
 export default router;
