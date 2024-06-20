@@ -12,10 +12,9 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post('/api/loginusers', { username, password });
-      console.log(response.data); // Manejar la respuesta del backend (opcional)
-      // Aquí podrías redirigir al usuario a otra página si el inicio de sesión fue exitoso
+      console.log(response.data);
     } catch (error) {
-      setErrorMessage(error.response.data.message); // Mostrar mensaje de error
+      setErrorMessage(error.response.data.message);
     }
   };
 
